@@ -8,6 +8,8 @@
 
 数据库在 **03/10** 之前完成，需要写数据库设计说明
 
+logo:solar:basketball-bold-duotone
+
 <div align=center><b>系统流程图</b></div>
 
 <img src="./assets/系统流程图.jpg" alt="系统流程图" style="zoom: 50%;" />
