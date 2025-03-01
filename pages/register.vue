@@ -5,7 +5,7 @@
 
       <span class="self-center">
         突然想起来有账号？
-        <NuxtLink to="/register" class="link link-secondary">去登录</NuxtLink>
+        <NuxtLink to="/login" class="link link-secondary">去登录</NuxtLink>
       </span>
 
       <div class="text-center">
@@ -20,15 +20,15 @@
           </div>
         </div>
         <label for="username" class="input">
-          <span class="label">用户名</span>
+          <span class="label w-30 justify-end">用户名</span>
           <input v-model="username" id="username" type="text">
         </label>
         <label for="password" class="input mt-3">
-          <span class="label">密码</span>
+          <span class="label w-30 justify-end">密码</span>
           <input v-model="password" type="password" id="password">
         </label>
         <label for="password2" class="input mt-3">
-          <span class="label">确认密码</span>
+          <span class="label w-30 justify-end">确认密码</span>
           <input v-model="password2" type="password" id="password2">
         </label>
       </div>

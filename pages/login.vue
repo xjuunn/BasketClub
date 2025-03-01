@@ -10,11 +10,11 @@
 
       <div class="text-center">
         <label for="username" class="input">
-          <span class="label">用户名</span>
+          <span class="label w-30 justify-end">用户名</span>
           <input v-model="username" id="username" type="text">
         </label>
         <label for="password" class="input mt-3">
-          <span class="label">密码</span>
+          <span class="label w-30 justify-end">密码</span>
           <input v-model="password" type="password" id="password">
         </label>
       </div>
