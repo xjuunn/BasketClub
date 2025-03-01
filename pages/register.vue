@@ -51,13 +51,13 @@ let avatarFile: File | null = null;
 async function selectFile() {
   fileSelector.value?.click();
 }
-
+let { errorToast, successToast } = useToastStore();
 function onSelectFile(e: Event) {
   let target = e.target as HTMLInputElement;
   if (target.files && target.files.length > 0) {
     let file = target.files[0];
     if (file.size > 1024 * 1024 * 20) {
-      console.log("文件太大了");
+      errorToast("文件太大了");
       return;
     }
 
@@ -67,26 +67,29 @@ function onSelectFile(e: Event) {
 
 }
 async function register() {
+  if (username.value.length === 0) {
+    errorToast("请输入用户名");
+    return;
+  }
   if (username.value.length > 15) {
-    console.log("用户名太长了");
+    errorToast("用户名太长了");
     return;
   }
   if (password.value === '') {
-    console.log("请输入密码");
+    errorToast("请输入密码");
     return;
   }
   if (password.value !== password2.value) {
-    console.log("两次输入的密码不一致");
+    errorToast("两次输入的密码不一致");
     return;
   }
   if (!avatarFile) {
-    console.log("请选择用户头像");
-
+    errorToast("请选择用户头像");
     return;
   }
   let { data } = await Auth.register(username.value, password.value, avatarFile)
   if (data.code === 200) {
-    console.log("注册成功");
+    successToast('注册成功');
     navigateTo("/login");
   }
 

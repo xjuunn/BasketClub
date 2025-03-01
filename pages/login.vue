@@ -44,13 +44,30 @@ onMounted(() => {
   rember.value = Boolean(localStorage.getItem('rember')) ?? false;
 })
 
+let { successToast, errorToast } = useToastStore();
 async function login() {
+  if (username.value.length === 0) {
+    errorToast("请输入用户名");
+    return;
+  }
+  if (username.value.length > 25) {
+    errorToast("用户名过长");
+    return;
+  }
+  if (password.value.length === 0) {
+    errorToast("请输入密码");
+    return;
+  } if (password.value.length > 30) {
+    errorToast("密码过长");
+    return;
+  }
   let data = await useUserStore().login(username.value, password.value);
   if (data.code == 200) {
     localStorage.setItem('username', username.value);
     localStorage.setItem('password', password.value);
     localStorage.setItem('rember', rember.value + '');
     navigateTo('/')
+    successToast('登录成功');
   }
 }
 </script>
