@@ -1,6 +1,14 @@
 <template>
-  <div class="">
-    test
-    <Icon name="svg-spinners:8-dots-rotate" size="2rem"></Icon>
+  <div>
+    <button class="btn btn-primary" @click="test">test</button>
   </div>
 </template>
+<script lang="ts" setup>
+definePageMeta({
+  layout: 'frontend'
+})
+async function test() {
+
+}
+
+</script>
