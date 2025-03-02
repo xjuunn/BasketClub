@@ -1,5 +1,5 @@
 <template>
-  <div class="toast toast-center toast-top z-40">
+  <div class="toast toast-center toast-top z-[100]">
     <div v-for="(item, index) in toastList" class="alert" :class="`alert-${item.type} alert-${item.style}`" >
       <Icon :name="item.icon??'mdi:success'" size="1.3rem"></Icon>
       {{ item.message }}
