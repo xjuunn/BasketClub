@@ -1,11 +1,12 @@
 <template>
   <div>
-    仪表盘
+
   </div>
 </template>
 
 <script lang="ts" setup>
 definePageMeta({
-  layout: 'admin'
+  layout: "admin"
 })
+
 </script>

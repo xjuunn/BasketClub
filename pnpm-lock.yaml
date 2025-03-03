@@ -47,6 +47,9 @@ importers:
       vue-router:
         specifier: latest
         version: 4.5.0(vue@3.5.13(typescript@5.7.3))
+      xjuunntestpackage:
+        specifier: ^1.0.4
+        version: 1.0.4
     devDependencies:
       '@hypernym/nuxt-anime':
         specifier: ^2.1.1
@@ -3875,6 +3878,9 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
+
+  xjuunntestpackage@1.0.4:
+    resolution: {integrity: sha512-q2Wqw8JKq3CujVSicNk/LiwZbqXC2O2lGxXbjkfkaB5NhZ56mVLRYo1HNcHUVFP8vB2+JZFqJ2w5dWStHNDiLA==}
 
   y18n@5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}
@@ -8127,6 +8133,8 @@ snapshots:
   wrappy@1.0.2: {}
 
   ws@8.18.1: {}
+
+  xjuunntestpackage@1.0.4: {}
 
   y18n@5.0.8: {}
 

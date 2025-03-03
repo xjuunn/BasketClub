@@ -157,5 +157,5 @@ export function del(id: number | string) {
 }
 
 export function getAvatar(avatarurl: string) {
-  return useAxios().getUri() + avatarurl
+  return useAxios().getUri() + '' + avatarurl
 }
