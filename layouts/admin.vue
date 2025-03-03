@@ -1,6 +1,6 @@
 <template>
-  <div class="flex">
-    <aside class="h-screen sticky top-0 flex flex-col bg-base-200 overflow-y-auto">
+  <div class="flex w-screen">
+    <aside class="h-screen sticky top-0 flex flex-col bg-base-200 overflow-y-auto min-w-[250px]">
       <!-- Header -->
       <div class="flex justify-between p-2">
         <!-- Logo -->
@@ -91,7 +91,7 @@
         </NuxtLink>
       </div>
     </aside>
-    <div class="flex-1">
+    <div class="flex-1 w-[calc(100vw-250px)]">
       <div class="navbar bg-base-200 flex items-center">
         <div class="navbar-start">
 
@@ -105,11 +105,13 @@
           </div>
         </div>
       </div>
-      <slot />
+      <div class="w-full overflow-scroll h-[calc(100vh-67px)]">
+        <slot />
+      </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
-let { user,logout } = useUserStore();
+let { user, logout } = useUserStore();
 import * as Auth from '../api/Auth'
 </script>

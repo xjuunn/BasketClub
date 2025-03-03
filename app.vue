@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full overflow-hidden">
     <div class="h-0 overflow-hidden">
       <div class="alert alert-error"></div>
       <div class="alert alert-info"></div>
@@ -20,3 +20,9 @@ useHead({
   ]
 })
 </script>
+<style lang="css" scoped>
+html , body {
+  width: 100vw;
+  overflow: hidden;
+}
+</style>
