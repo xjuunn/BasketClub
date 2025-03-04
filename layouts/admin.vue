@@ -47,22 +47,22 @@
             </li>
             <li class="menu-title">场地</li>
             <li>
-              <a class="active">
+              <NuxtLink to="/admin/venue" class="active">
                 <Icon name="solar:folder-with-files-bold-duotone" size="1.3rem"></Icon>
                 场地管理
-              </a>
+              </NuxtLink>
             </li>
             <li>
-              <a>
+              <NuxtLink to="/admin/book">
                 <Icon name="solar:clock-square-bold-duotone" size="1.3rem"></Icon>
                 预约管理
-              </a>
+              </NuxtLink>
             </li>
             <li>
-              <a>
+              <NuxtLink to="/admin/event">
                 <Icon name="solar:plate-bold-duotone" size="1.3rem"></Icon>
                 赛事管理
-              </a>
+              </NuxtLink>
             </li>
             <li class="menu-title">反馈</li>
             <li>
@@ -113,5 +113,6 @@
 </template>
 <script lang="ts" setup>
 let { user, logout } = useUserStore();
+import { NuxtLink } from '#components';
 import * as Auth from '../api/Auth'
 </script>

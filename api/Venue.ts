@@ -14,7 +14,7 @@ export interface createForm {
     pricePerHour: number;
     description: string;
     image: File;
-    status: 'available' | 'unavailable';
+    status: 'available' | 'unavailable' | '';
 }
 
 /**
@@ -91,8 +91,8 @@ export interface BookInfo {
 
 export interface CreateBookForm {
     venueID: number;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
 }
 
 /**
@@ -111,7 +111,7 @@ export interface SearchListForm {
     pricePerHour?: number;
     minPrice?: number;
     maxPrice?: number;
-    status?: 'unavailable' | 'available';
+    status?: 'unavailable' | 'available' | '';
 }
 
 /**
@@ -146,11 +146,17 @@ export function list(data: SearchListForm) {
     return useAxios().post<VenueListResult>('/venue/search', data);
 }
 
+export function getImgUrl(name: string) {
+    return useAxios().getUri() + '' + name;
+}
+
+/// 预定相关接口
+
 export interface AddBookForm {
     userID: number,
     venueID: number,
-    bookingDate: Date,
-    bookingDateEnd: Date,
+    bookingDate: string,
+    bookingDateEnd: string,
     status: "pending" | "confirmed" | "cancelled"
 }
 
@@ -165,8 +171,8 @@ export function createBook(data: AddBookForm) {
 export interface UpdateBookForm {
     bookingID: string;
     venueID: number;
-    bookingDate: Date;
-    bookingDateEnd: Date;
+    bookingDate: string;
+    bookingDateEnd: string;
     status: "pending" | "confirmed" | "cancelled";
 }
 
@@ -179,9 +185,9 @@ export function updateBook(data: UpdateBookForm) {
 }
 
 export class SearchBookListForm {
-    status?: "pending" | "confirmed" | "cancelled";
-    startDate?: Date;
-    endDate?: Date;
+    status?: "pending" | "confirmed" | "cancelled" | '';
+    startDate?: string | null;
+    endDate?: string | null;
     venueName?: string;
     page?: number = 1;
     size?: number = 15;
@@ -218,6 +224,8 @@ export interface BookItem {
  * @param data 搜索信息
  */
 export function listBooks(data: SearchBookListForm) {
+    console.log(data);
+
     return useAxios().post<BookListResult>('/venue-booking/search', data);
 }
 

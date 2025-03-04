@@ -10,8 +10,8 @@ export interface Result {
 export interface CreateEventForm {
     name: string;
     description: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: string;
+    endDate: string;
     location: string;
     status: 'upcoming' | 'ongoing' | 'finished';
     image: File;
@@ -70,9 +70,9 @@ export function del(id: string | number) {
 export interface SearchEventForm {
     name?: string;
     location?: string;
-    status?: 'upcoming' | 'ongoing' | 'finished';
-    startDate?: Date;
-    endDate?: Date;
+    status?: 'upcoming' | 'ongoing' | 'finished' | '';
+    startDate?: string;
+    endDate?: string;
     page?: number;
     size?: number;
 }
@@ -153,7 +153,7 @@ export function addView(id: number | string) {
 export interface EventRegisterForm {
     userID: number;
     eventID: number;
-    registrationDate: Date;
+    registrationDate: string;
 }
 
 /**
@@ -230,4 +230,8 @@ export function listEventUsers(page: string | number = 1, size: string | number 
     formData.append("page", page + '');
     formData.append("size", size + '');
     return useAxios().post<EventUserResult>('/event-registration/details', formData);
+}
+
+export function getImgUrl(name: string) {
+    return useAxios().getUri() + '' + name
 }

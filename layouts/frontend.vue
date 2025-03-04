@@ -47,7 +47,7 @@
               </a>
             </li>
             <div class="divider my-0"></div>
-            <li v-show="user.role == 1">
+            <li v-show="user.role == 2">
               <NuxtLink to="/admin">
                 <Icon name="solar:shield-keyhole-minimalistic-bold-duotone" size="1.2rem"></Icon>
                 管理后台
@@ -88,7 +88,7 @@
             <Icon name="solar:basketball-bold-duotone" size="1.3rem"></Icon>
             比赛
           </a>
-          <NuxtLink to="/admin" role="tab" class="tab gap-2" v-show="user.role == 1">
+          <NuxtLink to="/admin" role="tab" class="tab gap-2" v-show="user.role == 2">
             <Icon name="solar:shield-keyhole-minimalistic-bold-duotone" size="1.2rem"></Icon>
             管理后台
           </NuxtLink>
