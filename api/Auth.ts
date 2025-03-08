@@ -162,5 +162,5 @@ export function del(id: number | string) {
  * @param avatarurl 图片地址
  */
 export function getAvatar(avatarurl: string) {
-  return useAxios().getUri() + '' + avatarurl
+  return useAxios().getUri() + '/' + avatarurl
 }

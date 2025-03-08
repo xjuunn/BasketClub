@@ -68,7 +68,7 @@ export interface OrderInfo {
 }
 
 export class SearchForm {
-    orderType: 'product' | 'venue' = "venue";
+    orderType: 'product' | 'venue' = "venue"; // 订单分为两类，一个是场地预定订单，一个是商品订单
     page: number = 1;
     size: number = 15;
 }
@@ -78,5 +78,13 @@ export class SearchForm {
  * @param data 搜索信息
  */
 export function list(data: SearchForm) {
-    return useAxios().post('/order/details', data);
+    const params = new URLSearchParams();
+    params.append('orderType', data.orderType);
+    params.append('page', (data.page ?? 1) + '');
+    params.append('size', (data.size ?? 15) + '');
+    return useAxios().post('/order/details', params, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    });
 }

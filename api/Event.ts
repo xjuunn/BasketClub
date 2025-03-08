@@ -232,6 +232,10 @@ export function listEventUsers(page: string | number = 1, size: string | number 
     return useAxios().post<EventUserResult>('/event-registration/details', formData);
 }
 
+/**
+ * 获取图片URL
+ * @param name 图片文件名
+ */
 export function getImgUrl(name: string) {
-    return useAxios().getUri() + '' + name
+    return useAxios().getUri() + '/' + name
 }

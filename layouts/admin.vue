@@ -40,10 +40,10 @@
               </NuxtLink>
             </li>
             <li>
-              <a>
+              <NuxtLink to="/admin/order">
                 <Icon name="solar:wallet-money-bold-duotone" size="1.3rem"></Icon>
                 订单和财务
-              </a>
+              </NuxtLink>
             </li>
             <li class="menu-title">场地</li>
             <li>
@@ -66,16 +66,15 @@
             </li>
             <li class="menu-title">反馈</li>
             <li>
-              <a>
+              <NuxtLink to="/admin/feedback">
                 <Icon name="solar:mailbox-bold-duotone" size="1.3rem"></Icon>
                 投诉和问题
-              </a>
+              </NuxtLink>
             </li>
           </ul>
         </div>
       </div>
 
-      <!-- Footer -->
       <div class="flex justify-between items-center p-2">
         <a class="btn">
           <img v-show="user.avatar" alt="头像" :src="Auth.getAvatar(user.avatar ?? '')" class="w-8 rounded-full" />
