@@ -33,7 +33,7 @@
               <button
                 class="btn btn-outline btn-secondary hover:bg-secondary hover:text-white transition-colors duration-300 shadow-lg hover:shadow-xl"
               >
-                了解更多
+                热门比赛
               </button>
             </div>
           </div>

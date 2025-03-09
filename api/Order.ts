@@ -5,6 +5,8 @@ export interface Result {
     [property: string]: any;
 }
 
+/// 场地订单
+
 export interface CreateOrderForm {
     userID: number;
     orderType: 'product' | 'venue';
@@ -36,7 +38,7 @@ export function update(orderID: string | number, data: CreateOrderForm) {
  * @param id 订单ID
  */
 export function del(id: string | number) {
-    return useAxios().delete('/order/delete/' + id);
+    return useAxios().delete<Result>('/order/delete/' + id);
 }
 
 /**
@@ -82,9 +84,57 @@ export function list(data: SearchForm) {
     params.append('orderType', data.orderType);
     params.append('page', (data.page ?? 1) + '');
     params.append('size', (data.size ?? 15) + '');
-    return useAxios().post('/order/details', params, {
+    return useAxios().post<OrderListResult>('/order/details', params, {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     });
+}
+
+/// 商品订单
+
+export interface CreateProductForm {
+    productID: number;
+    userID: number;
+    quantity: number;
+    totalAmount: number;
+    saleDate: string;
+    paymentMethod: '现金' | '信用卡' | '支付宝' | '微信' | '其他';
+    status: 'pending' | 'completed' | 'cancelled';
+    discount: number;
+}
+
+/**
+ * 创建商品订单
+ * @param data 订单信息
+ */
+export function createProductOrder(data: CreateProductForm) {
+    return useAxios().post<Result>('/product-sales/add', data);
+}
+
+export class SearchProductOrderForm {
+    productName?: string;
+    userName?: string;
+    status?: string;
+    page: number = 1;
+    size: number = 15;
+}
+
+/**
+ * 搜索商品订单列表
+ * @param data 搜索信息
+ */
+export function listProductOrder(data: SearchProductOrderForm) {
+    return useAxios().post('/product-sales/search', data);
+}
+
+/**
+ * 更新商品订单状态
+ * @param id 商品ID
+ * @param status 订单状态   
+ */
+export function updateProductOrderStatus(id: string | number, status: 'pending' | 'paid' | 'shipped' | 'completed' | 'cancelled') {
+    return useAxios().put<Result>('/product-sales/status/' + id,
+        new FormData().append('status', status)
+    )
 }

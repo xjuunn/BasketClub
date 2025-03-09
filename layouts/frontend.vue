@@ -22,16 +22,16 @@
               </NuxtLink>
             </li>
             <li>
-              <a class="active">
+              <NuxtLink to="/venue" class="active">
                 <Icon name="solar:clock-circle-bold-duotone" size="1.2rem"></Icon>
                 预约场地
-              </a>
+              </NuxtLink>
             </li>
             <li>
-              <a>
+              <NuxtLink to="/event">
                 <Icon name="solar:basketball-bold-duotone" size="1.2rem"></Icon>
                 比赛
-              </a>
+              </NuxtLink>
             </li>
             <div class="divider my-0" v-show="islogin"></div>
             <li v-show="islogin">
@@ -80,14 +80,14 @@
             <Icon name="solar:home-2-bold-duotone" size="1.3rem"></Icon>
             首页
           </NuxtLink>
-          <a role="tab" class="tab  gap-2">
+          <NuxtLink to="/venue" role="tab" class="tab  gap-2">
             <Icon name="solar:clock-circle-bold-duotone" size="1.3rem"></Icon>
             预约场地
-          </a>
-          <a role="tab" class="tab gap-2">
+          </NuxtLink>
+          <NuxtLink to="/event" role="tab" class="tab gap-2">
             <Icon name="solar:basketball-bold-duotone" size="1.3rem"></Icon>
             比赛
-          </a>
+          </NuxtLink>
           <NuxtLink to="/admin" role="tab" class="tab gap-2" v-show="user.role == 2">
             <Icon name="solar:shield-keyhole-minimalistic-bold-duotone" size="1.2rem"></Icon>
             管理后台
