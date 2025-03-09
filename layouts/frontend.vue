@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="w-full overflow-x-hidden">
     <div class="sticky top-0 z-50">
       <nav class="navbar justify-between bg-base-300">
         <div class="flex gap-2 overflow-x-auto">
@@ -115,7 +115,9 @@
         </ul>
       </nav> -->
     </div>
-    <slot />
+    <div class="w-full h-[calc(100vh-4rem)]">
+      <slot />
+    </div>
   </div>
 </template>
 <script lang="ts" setup>
@@ -123,3 +125,8 @@ let { islogin, logout, user } = useUserStore();
 let route = useRoute();
 
 </script>
+<style scoped>
+body,html {
+  overflow: hidden;
+}
+</style>
