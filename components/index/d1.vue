@@ -25,12 +25,12 @@
             </p>
 
             <div class="space-x-4">
-              <button
+              <button @click="navigateTo('/venue')"
                 class="btn btn-primary hover:scale-105 transition-transform duration-300 shadow-lg hover:shadow-xl"
               >
                 立即预约
               </button>
-              <button
+              <button @click="navigateTo('/event')"
                 class="btn btn-outline btn-secondary hover:bg-secondary hover:text-white transition-colors duration-300 shadow-lg hover:shadow-xl"
               >
                 热门比赛

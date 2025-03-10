@@ -4,6 +4,7 @@ export interface Result {
     code: number;
     data: string;
     message: string;
+
     [property: string]: any;
 }
 
@@ -36,7 +37,6 @@ export function create(data: createForm) {
         }
     })
 }
-// "multipart/form-data"
 
 /**
  * 删除场地
@@ -75,6 +75,7 @@ export interface BookInfoResult {
     code: number;
     data: BookInfo[];
     message: string;
+
     [property: string]: any;
 }
 
@@ -86,6 +87,7 @@ export interface BookInfo {
     totalAmount?: number;
     userID?: number;
     venueID?: number;
+
     [property: string]: any;
 }
 
@@ -105,6 +107,7 @@ export function findBookInfo(data: CreateBookForm) {
 
 
 export interface SearchListForm {
+    id?: number;
     name?: string;
     location?: string;
     capacity?: string;
@@ -121,6 +124,7 @@ export interface VenueListResult {
     code: number;
     data: VenueItem[];
     message: string;
+
     [property: string]: any;
 }
 
@@ -135,6 +139,7 @@ export interface VenueItem {
     status: string;
     updatedAt: string;
     venueID: number;
+
     [property: string]: any;
 }
 
@@ -165,6 +170,7 @@ export interface AddBookForm {
  * @param data 预定信息
  */
 export function createBook(data: AddBookForm) {
+    console.log("创建预约", data);
     return useAxios().post<Result>('/venue-booking/add', data);
 }
 
@@ -200,6 +206,7 @@ export interface BookListResult {
     code: number;
     data: BookItem[];
     message: string;
+
     [property: string]: any;
 }
 
@@ -216,6 +223,7 @@ export interface BookItem {
     userID?: number;
     venueID?: number;
     venueName?: string;
+
     [property: string]: any;
 }
 

@@ -68,6 +68,7 @@ export function del(id: string | number) {
 }
 
 export interface SearchEventForm {
+    id?: number | string;
     name?: string;
     location?: string;
     status?: 'upcoming' | 'ongoing' | 'finished' | '';
@@ -189,6 +190,8 @@ export interface isRegisted {
  * @param eventID 比赛ID
  */
 export function isRegisted(userID: string | number, eventID: string | number) {
+    console.log(userID, eventID);
+
     return useAxios().post<IsRegistedResult>('/event-registration/check-registration', {
         userID, eventID
     })

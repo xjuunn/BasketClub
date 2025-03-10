@@ -45,6 +45,12 @@
                 订单和财务
               </NuxtLink>
             </li>
+            <li>
+              <NuxtLink to="/admin/product">
+                <Icon name="solar:wallet-money-bold-duotone" size="1.3rem"></Icon>
+                商品管理
+              </NuxtLink>
+            </li>
             <li class="menu-title">场地</li>
             <li>
               <NuxtLink to="/admin/venue" class="active">

@@ -19,6 +19,8 @@ export interface CreateForm {
  * @param data 商品数据
  */
 export function create(data: CreateForm) {
+    console.log(data);
+
     let formdata = new FormData();
     formdata.append('name', data.name);
     formdata.append('description', data.description);
@@ -114,4 +116,8 @@ export function update(data: UpdateForm) {
             "Content-Type": "multipart/form-data"
         }
     })
+}
+
+export function getImgUrl(name: string) {
+    return useAxios().getUri() + '' + name;
 }

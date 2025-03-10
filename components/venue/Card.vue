@@ -38,7 +38,13 @@
         {{ venue.description }}
       </p>
       <div class="card-actions justify-end mt-4">
-        <button class="btn btn-primary btn-sm md:btn-md">立即预约</button>
+        <button
+          class="btn btn-primary btn-sm md:btn-md"
+          :disabled="venue.status != 'available'"
+          @click="navigateTo('/venue/' + venue.venueID)"
+        >
+          立即预约
+        </button>
       </div>
     </div>
   </div>
