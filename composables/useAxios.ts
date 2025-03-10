@@ -30,5 +30,7 @@ function createAxios() {
 }
 
 let axiosInstance = createAxios();
-
+export function refreshAxiosInstance() {
+  axiosInstance = createAxios();
+}
 export const useAxios = () => axiosInstance;

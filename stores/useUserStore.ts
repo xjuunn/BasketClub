@@ -21,6 +21,7 @@ export const useUserStore = defineStore('user', () => {
         localStorage.setItem('token', data.data.token);
         localStorage.setItem('user', JSON.stringify(data.data.user));
         _islogin.value = true;
+        refreshAxiosInstance();
         return data
     }
     async function logout() {
