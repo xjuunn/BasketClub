@@ -19,7 +19,12 @@ function createAxios() {
   instance.interceptors.response.use((res) => {
     return res;
   }, error => {
-    console.log("请求出错了！", error)
+    if (error.status == 401) {
+      useToastStore().errorToast("未登录或Token失效，请重新登录")
+      navigateTo('/login')
+    } else {
+      console.log("请求出错了！", error)
+    }
   })
   return instance;
 }

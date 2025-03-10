@@ -5,6 +5,7 @@
     <IndexD3></IndexD3>
     <IndexD4></IndexD4>
     <IndexD5></IndexD5>
+    <IndexD6></IndexD6>
    
   </div>
 </template>
