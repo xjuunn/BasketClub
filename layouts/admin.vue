@@ -10,9 +10,9 @@
           BasketClub
         </NuxtLink>
 
-        <a class="btn btn-ghost btn-circle text-lg" title="系统设置">
+        <!-- <a class="btn btn-ghost btn-circle text-lg" title="系统设置">
           <Icon name="solar:settings-bold-duotone" size="1.5rem" />
-        </a>
+        </a> -->
       </div>
 
       <!-- Body -->
@@ -91,7 +91,7 @@
           </div>
         </a>
 
-        <NuxtLink to="/login" @click="logout" class="btn btn-error btn-sm mr-3" title="登出">
+        <NuxtLink to="/login" @click="logout()" class="btn btn-error btn-sm mr-3" title="登出">
           <Icon name="solar:exit-bold-duotone" size="1.3rem" />
         </NuxtLink>
       </div>
@@ -101,14 +101,14 @@
         <div class="navbar-start">
 
         </div>
-        <div class="navbar-end">
+        <!-- <div class="navbar-end">
           <div class="menu menu-sm">
             <button class="btn btn-xs btn-goast menu-item">
               <Icon name="solar:notification-unread-bold-duotone" size="1.2rem"></Icon>
               通知
             </button>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="w-full overflow-scroll h-[calc(100vh-67px)]">
         <slot />

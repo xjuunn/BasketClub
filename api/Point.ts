@@ -40,7 +40,7 @@ export function exchange(userid: string | number, exchangeType: 100 | 500 | 1000
     const params = new URLSearchParams();
     params.append('userID', userid + '');
     params.append('exchangeType', exchangeType + '');
-    console.log(userid, exchangeType);
+    // console.log(userid, exchangeType);
 
     return useAxios().post<Result>('/points-exchange/exchange', params, {
         headers: {

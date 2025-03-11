@@ -119,11 +119,18 @@
             升级为会员
           </button>
           <button
-            class="btn btn-secondary join-item"
+            class="btn btn-secondary"
             @click="showExchangeModal = true"
             v-show="user.role == 1"
           >
             兑换积分
+          </button>
+          <button
+            class="btn btn-secondary ml-2"
+            v-show="user.role == 1 || user.role == 0"
+            @click="chong"
+          >
+            充值
           </button>
         </div>
       </div>
@@ -197,7 +204,7 @@ definePageMeta({
 });
 import * as Auth from "../../api/Auth";
 import * as Point from "~/api/Point";
-let { user, refreshUserInfo, logout } = useUserStore();
+let { user, userid, refreshUserInfo, logout } = useUserStore();
 onMounted(() => {
   imgurl.value = Auth.getAvatar(user.value.avatar ?? "");
   sex.value = user.value.gender ?? -1;
@@ -262,11 +269,29 @@ async function handleExchange() {
       user.value.userID ?? "-1",
       exchangeType.value
     );
-    successToast(data.message);
+    if (data.code == 200) {
+      successToast(data.message);
+    } else {
+      errorToast(data.message);
+    }
     showExchangeModal.value = false;
     refreshUserInfo();
   } catch (error) {
     errorToast("兑换积分失败");
   }
+}
+
+async function chong() {
+  let { data } = await Auth.updateBalance({
+    balance: (user.value.balance ?? 0) + 1000,
+    username: username.value,
+  });
+  if (data.code == 200) {
+    successToast(data.message);
+  } else {
+    errorToast(data.message);
+  }
+
+  refreshUserInfo();
 }
 </script>

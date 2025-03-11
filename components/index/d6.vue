@@ -169,7 +169,7 @@ async function handleBuy() {
   const totalAmount = selectedProduct.value.price * quantity.value;
 
   try {
-    await Order.createProductOrder({
+    let { data } = await Order.createProductOrder({
       productID: selectedProduct.value.productID ?? -1,
       userID: user.value.userID ?? -1,
       quantity: quantity.value,
@@ -180,9 +180,12 @@ async function handleBuy() {
       status: "pending",
       discount: 0,
     });
-    console.log(totalAmount);
+    if (data.code == 200) {
+      successToast(data.message);
+    } else {
+      errorToast(data.message);
+    }
 
-    successToast("购买成功");
     showModal.value = false;
   } catch (error) {
     errorToast("购买失败");

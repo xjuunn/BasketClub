@@ -6,6 +6,7 @@ export const useUserStore = defineStore('user', () => {
     let user = computed(() => _user)
     let _islogin = ref(false);
     let islogin = computed(() => _islogin);
+    let userid = computed(() => _user.value.userID)
     onMounted(async () => {
         _user.value = JSON.parse(await localStorage.getItem('user') ?? '{}')
         if (_user.value.username !== undefined) _islogin.value = true;
@@ -22,6 +23,9 @@ export const useUserStore = defineStore('user', () => {
         localStorage.setItem('user', JSON.stringify(data.data.user));
         _islogin.value = true;
         refreshAxiosInstance();
+        let usernum = await $fetch('/api/addusernum');
+        console.log(usernum);
+
         return data
     }
     async function logout() {
@@ -33,21 +37,20 @@ export const useUserStore = defineStore('user', () => {
     async function refreshUserInfo() {
         let { data } = await Auth.list({ username: _user.value.username })
         let newuser = data.data[0]
-        _user.value = {
-            username: newuser.username,
-            avatar: newuser.avatar,
-            role: newuser.role,
-            balance: newuser.balance,
-            gender: newuser.gender,
-            membershipLevel: newuser.membershipLevel,
-            points: newuser.points,
-        }
+        _user.value.username = newuser.username;
+        _user.value.avatar = newuser.avatar;
+        _user.value.role = newuser.role;
+        _user.value.balance = newuser.balance;
+        _user.value.gender = newuser.gender;
+        _user.value.membershipLevel = newuser.membershipLevel;
+        _user.value.points = newuser.points;
         localStorage.setItem('user', JSON.stringify(_user.value))
 
     }
     return {
         login,
         logout,
+        userid,
         user,
         islogin,
         refreshUserInfo
